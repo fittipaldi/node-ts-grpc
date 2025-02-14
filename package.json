@@ -1,0 +1,42 @@
+{
+  "name": "nodejs-grpc-template",
+  "version": "1.0.0",
+  "description": "gRPC typescript start with nodejs example",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon --ext ts --exec ts-node src/server.ts",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "proto:generate": "./scripts/protoc.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/reflection": "^1.0.4",
+    "dotenv": "^16.4.7",
+    "google-protobuf": "^3.21.2",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@grpc/grpc-js": "^1.12.6",
+    "@grpc/proto-loader": "^0.7.13",
+    "@protobuf-ts/plugin": "^2.9.4",
+    "@types/dotenv": "^8.2.0",
+    "@types/google-protobuf": "^3.15.12",
+    "@types/node": "^22.13.4",
+    "@types/nodemon": "^1.19.0",
+    "@typescript-eslint/eslint-plugin": "^8.24.0",
+    "@typescript-eslint/parser": "^8.24.0",
+    "eslint": "^9.20.1",
+    "globals": "^15.15.0",
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "grpc-tools": "^1.13.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0"
+  }
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package demo;
+
+service DemoService {
+    rpc createDemo (DemoRequest) returns (DemoResponse);
+}
+
+message DemoRequest {
+    string name = 1;
+    string email = 2;
+}
+
+message DemoResponse {
+    string uuid = 1;
+    string name = 2;
+    string email = 3;
+    string message = 4;
+}
