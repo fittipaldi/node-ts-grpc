@@ -4,7 +4,8 @@
   "description": "gRPC typescript start with nodejs example",
   "main": "src/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copy:proto",
+    "copy:proto": "copyfiles -u 1 src/proto/**/*.proto dist/proto",
     "start": "node dist/index.js",
     "dev": "nodemon --ext ts --exec ts-node src/index.ts",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
@@ -32,6 +33,7 @@
     "@types/nodemon": "^1.19.0",
     "@typescript-eslint/eslint-plugin": "^8.24.0",
     "@typescript-eslint/parser": "^8.24.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^9.20.1",
     "globals": "^15.15.0",
     "grpc_tools_node_protoc_ts": "^5.3.3",
