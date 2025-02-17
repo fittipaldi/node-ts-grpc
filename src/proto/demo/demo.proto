@@ -3,7 +3,8 @@ syntax = "proto3";
 package demo;
 
 service DemoService {
-    rpc createDemo (DemoRequest) returns (DemoResponse);
+    rpc CreateDemo (DemoRequest) returns (DemoResponse);
+    rpc GetDemos (Empty) returns (DemosResponse);
 }
 
 message DemoRequest {
@@ -17,3 +18,10 @@ message DemoResponse {
     string email = 3;
     string message = 4;
 }
+
+message Empty {}
+
+message DemosResponse {
+    repeated DemoResponse demos = 1;
+}
+

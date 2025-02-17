@@ -4,6 +4,8 @@
 import { DemoService } from "./demo";
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
+import type { DemosResponse } from "./demo";
+import type { Empty } from "./demo";
 import type { DemoResponse } from "./demo";
 import type { DemoRequest } from "./demo";
 import * as grpc from "@grpc/grpc-js";
@@ -12,12 +14,19 @@ import * as grpc from "@grpc/grpc-js";
  */
 export interface IDemoServiceClient {
     /**
-     * @generated from protobuf rpc: createDemo(demo.DemoRequest) returns (demo.DemoResponse);
+     * @generated from protobuf rpc: CreateDemo(demo.DemoRequest) returns (demo.DemoResponse);
      */
     createDemo(input: DemoRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: DemoResponse) => void): grpc.ClientUnaryCall;
     createDemo(input: DemoRequest, metadata: grpc.Metadata, callback: (err: grpc.ServiceError | null, value?: DemoResponse) => void): grpc.ClientUnaryCall;
     createDemo(input: DemoRequest, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: DemoResponse) => void): grpc.ClientUnaryCall;
     createDemo(input: DemoRequest, callback: (err: grpc.ServiceError | null, value?: DemoResponse) => void): grpc.ClientUnaryCall;
+    /**
+     * @generated from protobuf rpc: GetDemos(demo.Empty) returns (demo.DemosResponse);
+     */
+    getDemos(input: Empty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: DemosResponse) => void): grpc.ClientUnaryCall;
+    getDemos(input: Empty, metadata: grpc.Metadata, callback: (err: grpc.ServiceError | null, value?: DemosResponse) => void): grpc.ClientUnaryCall;
+    getDemos(input: Empty, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: DemosResponse) => void): grpc.ClientUnaryCall;
+    getDemos(input: Empty, callback: (err: grpc.ServiceError | null, value?: DemosResponse) => void): grpc.ClientUnaryCall;
 }
 /**
  * @generated from protobuf service demo.DemoService
@@ -29,10 +38,17 @@ export class DemoServiceClient extends grpc.Client implements IDemoServiceClient
         this._binaryOptions = binaryOptions;
     }
     /**
-     * @generated from protobuf rpc: createDemo(demo.DemoRequest) returns (demo.DemoResponse);
+     * @generated from protobuf rpc: CreateDemo(demo.DemoRequest) returns (demo.DemoResponse);
      */
     createDemo(input: DemoRequest, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: DemoResponse) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: DemoResponse) => void), callback?: ((err: grpc.ServiceError | null, value?: DemoResponse) => void)): grpc.ClientUnaryCall {
         const method = DemoService.methods[0];
         return this.makeUnaryRequest<DemoRequest, DemoResponse>(`/${DemoService.typeName}/${method.name}`, (value: DemoRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): DemoResponse => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
+    }
+    /**
+     * @generated from protobuf rpc: GetDemos(demo.Empty) returns (demo.DemosResponse);
+     */
+    getDemos(input: Empty, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: DemosResponse) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: DemosResponse) => void), callback?: ((err: grpc.ServiceError | null, value?: DemosResponse) => void)): grpc.ClientUnaryCall {
+        const method = DemoService.methods[1];
+        return this.makeUnaryRequest<Empty, DemosResponse>(`/${DemoService.typeName}/${method.name}`, (value: Empty): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): DemosResponse => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
     }
 }

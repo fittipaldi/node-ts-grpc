@@ -45,6 +45,20 @@ export interface DemoResponse {
      */
     message: string;
 }
+/**
+ * @generated from protobuf message demo.Empty
+ */
+export interface Empty {
+}
+/**
+ * @generated from protobuf message demo.DemosResponse
+ */
+export interface DemosResponse {
+    /**
+     * @generated from protobuf field: repeated demo.DemoResponse demos = 1;
+     */
+    demos: DemoResponse[];
+}
 // @generated message type with reflection information, may provide speed optimized methods
 class DemoRequest$Type extends MessageType<DemoRequest> {
     constructor() {
@@ -171,9 +185,82 @@ class DemoResponse$Type extends MessageType<DemoResponse> {
  * @generated MessageType for protobuf message demo.DemoResponse
  */
 export const DemoResponse = new DemoResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class Empty$Type extends MessageType<Empty> {
+    constructor() {
+        super("demo.Empty", []);
+    }
+    create(value?: PartialMessage<Empty>): Empty {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        if (value !== undefined)
+            reflectionMergePartial<Empty>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: Empty): Empty {
+        return target ?? this.create();
+    }
+    internalBinaryWrite(message: Empty, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message demo.Empty
+ */
+export const Empty = new Empty$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class DemosResponse$Type extends MessageType<DemosResponse> {
+    constructor() {
+        super("demo.DemosResponse", [
+            { no: 1, name: "demos", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => DemoResponse }
+        ]);
+    }
+    create(value?: PartialMessage<DemosResponse>): DemosResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.demos = [];
+        if (value !== undefined)
+            reflectionMergePartial<DemosResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: DemosResponse): DemosResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated demo.DemoResponse demos */ 1:
+                    message.demos.push(DemoResponse.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: DemosResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated demo.DemoResponse demos = 1; */
+        for (let i = 0; i < message.demos.length; i++)
+            DemoResponse.internalBinaryWrite(message.demos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message demo.DemosResponse
+ */
+export const DemosResponse = new DemosResponse$Type();
 /**
  * @generated ServiceType for protobuf service demo.DemoService
  */
 export const DemoService = new ServiceType("demo.DemoService", [
-    { name: "createDemo", options: {}, I: DemoRequest, O: DemoResponse }
+    { name: "CreateDemo", options: {}, I: DemoRequest, O: DemoResponse },
+    { name: "GetDemos", options: {}, I: Empty, O: DemosResponse }
 ]);

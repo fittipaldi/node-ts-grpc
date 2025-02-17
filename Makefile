@@ -38,6 +38,10 @@ clean: ## Clean the build artifacts
 test_coverage: ## Run tests with coverage reporting
 	npm run test:coverage
 
+.PHONY: gen-proto
+gen-proto: ## Generate the proto files based on the proto in the folder ./src/proto/{proto-folder}/*.proto
+	npm run proto:generate
+
 help:
 	@echo "Available commands:"
 	@printf "%-30s %s\n" "Command" "Description"

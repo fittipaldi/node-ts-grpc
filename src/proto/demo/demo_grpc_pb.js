@@ -26,10 +26,32 @@ function deserialize_demo_DemoResponse(buffer_arg) {
   return demo_pb.DemoResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_demo_DemosResponse(arg) {
+  if (!(arg instanceof demo_pb.DemosResponse)) {
+    throw new Error('Expected argument of type demo.DemosResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_demo_DemosResponse(buffer_arg) {
+  return demo_pb.DemosResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_demo_Empty(arg) {
+  if (!(arg instanceof demo_pb.Empty)) {
+    throw new Error('Expected argument of type demo.Empty');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_demo_Empty(buffer_arg) {
+  return demo_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var DemoServiceService = exports.DemoServiceService = {
   createDemo: {
-    path: '/demo.DemoService/createDemo',
+    path: '/demo.DemoService/CreateDemo',
     requestStream: false,
     responseStream: false,
     requestType: demo_pb.DemoRequest,
@@ -38,6 +60,17 @@ var DemoServiceService = exports.DemoServiceService = {
     requestDeserialize: deserialize_demo_DemoRequest,
     responseSerialize: serialize_demo_DemoResponse,
     responseDeserialize: deserialize_demo_DemoResponse,
+  },
+  getDemos: {
+    path: '/demo.DemoService/GetDemos',
+    requestStream: false,
+    responseStream: false,
+    requestType: demo_pb.Empty,
+    responseType: demo_pb.DemosResponse,
+    requestSerialize: serialize_demo_Empty,
+    requestDeserialize: deserialize_demo_Empty,
+    responseSerialize: serialize_demo_DemosResponse,
+    responseDeserialize: deserialize_demo_DemosResponse,
   },
 };
 
