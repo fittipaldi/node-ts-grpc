@@ -1,13 +1,22 @@
 import * as grpc from "@grpc/grpc-js";
 import DemoRepository from "./repository/demoRepository";
 import type {DemoResponse, DemosResponse} from "../../proto/demo/demo"
+import {validateCreateDemoParams} from "./validator/demoValidator";
 
 // Implement the gRPC service handlers
 const demoService: any = {
     CreateDemo: (call: grpc.ServerUnaryCall<any, any>, callback: grpc.sendUnaryData<any>) => {
         console.log("Received request:", call.request);
-
         const {name, email} = call.request;
+
+        const validationError = validateCreateDemoParams(name, email);
+        if (validationError) {
+            return callback({
+                code: grpc.status.INVALID_ARGUMENT,
+                message: validationError
+            });
+        }
+
         const demoData = DemoRepository.addDemo(name, email);
 
         const response: DemoResponse = {
