@@ -3,7 +3,7 @@ import * as grpc from "@grpc/grpc-js";
 import path from "path";
 import fs from "fs";
 
-const PROTO_DIR = path.resolve(__dirname, ''); // Base proto directory
+const PROTO_DIR = path.resolve(__dirname, '../proto'); // Base proto directory
 
 /**
  * Recursively fetches all .proto files in subdirectories.

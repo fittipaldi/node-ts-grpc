@@ -1,6 +1,6 @@
 import * as grpc from "@grpc/grpc-js";
 import DemoRepository from "./repository/demoRepository";
-import type {DemoResponse, DemosResponse} from "../../proto/demo/demo"
+import type {DemoResponse, DemosResponse} from "../../../proto/demo/demo"
 import {validateCreateDemoParams} from "./validator/demoValidator";
 
 // Implement the gRPC service handlers
