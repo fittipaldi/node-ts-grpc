@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "tsc && npm run copy:proto",
-    "copy:proto": "copyfiles -u 1 src/proto/**/*.proto dist/proto",
-    "start": "node dist/index.js",
+    "copy:proto": "copyfiles -u 1 proto/**/*.proto dist/proto",
+    "start": "node dist/src/index.js",
     "dev": "nodemon --ext ts --exec ts-node src/index.ts",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "proto:generate": "./scripts/protoc.sh",

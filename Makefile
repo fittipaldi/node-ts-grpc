@@ -18,6 +18,11 @@ reinstall: ## Reinstall project dependencies, delete the node_modules folder and
 build: ## Build the application
 	npm run build
 
+.PHONY: rebuild
+rebuild: ## Remove dist folder and Build the application
+	rm -rf dist
+	npm run build
+
 .PHONY: start
 start: build ## Start the application after building
 	npm run start
