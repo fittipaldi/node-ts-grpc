@@ -1,6 +1,6 @@
 import demoService from "../../../src/services/demo/demoService";
 import demoRepository from "../../../src/services/demo/repository/demoRepository"; // Import the real singleton
-import type {DemosResponse} from "../../../src/proto/demo/demo";
+import type {DemosResponse} from "../../../proto/demo/demo";
 
 jest.mock("../../../src/services/demo/repository/demoRepository"); // Mock the repository
 
