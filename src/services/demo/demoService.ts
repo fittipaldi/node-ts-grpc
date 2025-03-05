@@ -30,8 +30,12 @@ const demoService: any = {
     },
 
     GetDemos: (call: grpc.ServerUnaryCall<any, any>, callback: grpc.sendUnaryData<any>) => {
-        const response = DemoRepository.getDemos();
-        
+        const demos = DemoRepository.getDemos();
+
+        const response: DemosResponse = {
+            demos: demos,
+        }
+
         callback(null, response);
     }
 };

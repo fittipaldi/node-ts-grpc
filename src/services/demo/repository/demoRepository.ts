@@ -1,5 +1,4 @@
 import {v4 as uuidv4} from "uuid";
-import {DemoResponse, DemosResponse} from "../../../../proto/demo/demo";
 
 interface Demo {
     uuid: string;
@@ -11,7 +10,7 @@ interface Demo {
 class DemoRepository {
     private demos: Map<string, Demo> = new Map();
 
-    addDemo(name: string, email: string): DemoResponse {
+    addDemo(name: string, email: string): Demo {
         const uuid = uuidv4();
         const newDemo: Demo = {
             uuid,
@@ -23,9 +22,8 @@ class DemoRepository {
         return newDemo;
     }
 
-    getDemos(): DemosResponse {
-        const demos: DemosResponse = {demos: Array.from(this.demos.values())};
-        return demos;
+    getDemos(): Demo[] {
+        return Array.from(this.demos.values());
     }
 }
 
